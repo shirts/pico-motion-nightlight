@@ -44,14 +44,50 @@ async fn nightlight() -> ! {
   let sleep_duration = 60 * 5;
 
   loop {
-    if motion.is_high() {
-      led14.set_high();
-      led15.set_high();
-      led16.set_high();
-      Timer::after_secs(sleep_duration).await;
-      led16.set_low();
-      led15.set_low();
-      led14.set_low();
+    loop {
+      if motion.is_high() {
+        led14.set_high();
+        led15.set_high();
+        led16.set_high();
+        Timer::after_secs(sleep_duration).await;
+        led16.set_low();
+        led15.set_low();
+        led14.set_low();
+        Timer::after_millis(250).await;
+        led16.set_high();
+        led15.set_high();
+        led14.set_high();
+        Timer::after_millis(250).await;
+        led16.set_low();
+        led15.set_low();
+        led14.set_low();
+        Timer::after_millis(250).await;
+        led16.set_high();
+        led15.set_high();
+        led14.set_high();
+        Timer::after_millis(250).await;
+        led16.set_low();
+        led15.set_low();
+        led14.set_low();
+        Timer::after_millis(250).await;
+        led16.set_high();
+        led15.set_high();
+        led14.set_high();
+        Timer::after_millis(250).await;
+        led16.set_low();
+        led15.set_low();
+        led14.set_low();
+        Timer::after_millis(250).await;
+        led16.set_high();
+        led15.set_high();
+        led15.set_high();
+      }
+      else {
+        led16.set_low();
+        led15.set_low();
+        led14.set_low();
+        break;
+      }
     }
   }
 }
